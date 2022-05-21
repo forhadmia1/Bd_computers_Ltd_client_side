@@ -2,9 +2,12 @@ import React from 'react';
 import { FcGoogle } from 'react-icons/fc'
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
+import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const Login = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
     const onSubmit = data => console.log(data);
     return (
         <section class="h-screen">
@@ -63,14 +66,12 @@ const Login = () => {
                             </div>
 
                             {/* <!-- Submit button --> */}
-                            <button
+                            <input
                                 type="submit"
                                 class="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
-                                data-mdb-ripple="true"
-                                data-mdb-ripple-color="light"
                             >
                                 Log in
-                            </button>
+                            </input>
 
                             <div
                                 class="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5"
@@ -79,6 +80,7 @@ const Login = () => {
                             </div>
 
                             <button
+                                onClick={() => signInWithGoogle()}
                                 class="px-7 py-3 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full flex justify-center items-center mb-3 bg-secondary"
                             >
                                 <FcGoogle className='text-2xl mr-2' />Continue with Facebook
