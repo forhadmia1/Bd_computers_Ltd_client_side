@@ -23,9 +23,9 @@ const Footer = () => {
                 </div>
                 <div>
                     <span class="footer-title">Get In Touch</span>
-                    <p className='flex items-center'><BsTelephoneFill className='mr-2 text-xl text-primary' />About us</p>
-                    <p className='flex items-center mt-2'><MdEmail className='mr-2 text-xl text-primary' />About us</p>
-                    <p className='flex items-center mt-2'><FaHome className='mr-2 text-xl text-primary' />About us</p>
+                    <p className='flex items-center'><BsTelephoneFill className='mr-2 text-xl text-secondary' />About us</p>
+                    <p className='flex items-center mt-2'><MdEmail className='mr-2 text-xl text-secondary' />About us</p>
+                    <p className='flex items-center mt-2'><FaHome className='mr-2 text-xl text-secondary' />About us</p>
                 </div>
             </div>
             <div className='p-4 text-white text-center bg-secondary'>
