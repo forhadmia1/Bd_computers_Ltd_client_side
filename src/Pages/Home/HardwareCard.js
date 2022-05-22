@@ -1,7 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const HardwareCard = ({ hardware }) => {
     const { name, image, description, avaliable_quantity, minimum_quantity, unit_price, _id } = hardware;
+    const navigate = useNavigate()
 
     return (
         <div class="card w-96 bg-base-100 shadow-xl">
@@ -13,7 +15,7 @@ const HardwareCard = ({ hardware }) => {
                 <p>Available Quantity: {avaliable_quantity}</p>
                 <p>Minimum Quantity: {minimum_quantity}</p>
                 <div class="card-actions mt-2">
-                    <button class="btn btn-primary">Buy Now</button>
+                    <button onClick={() => navigate(`/hardware/${_id}`)} class="btn btn-primary">Buy Now</button>
                 </div>
             </div>
         </div>

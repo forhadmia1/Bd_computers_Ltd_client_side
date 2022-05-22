@@ -5,7 +5,7 @@ import HardwareCard from './HardwareCard';
 
 const Hardwares = () => {
     const { isLoading, error, data: hardwares } = useQuery("hardware", () =>
-        fetch('hardwares.json')
+        fetch('http://localhost:5000/hardwares')
             .then(res => res.json())
     );
 
