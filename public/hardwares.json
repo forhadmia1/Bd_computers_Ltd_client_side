@@ -1,0 +1,29 @@
+[
+    {
+        "_id":"1",
+        "name":"Xtrike Me GM-512 RGB Gaming Mouse",
+        "image":"https://creatuscomputer.com/wp-content/uploads/2022/05/gm-512-03-500x500-1.jpg",
+        "description":"Backlight: RGB,Sensor: optical, Buttons: 7,DPI:800-1600-2400-3200-4800-6400(default),Switch rating: 3 million clicks",
+        "avaliable_quantity":"500",
+        "minimum_quantity":"50",
+        "unit_price":"1000"
+    },
+    {
+        "_id":"1",
+        "name":"Xtrike Me GM-512 RGB Gaming Mouse",
+        "image":"https://creatuscomputer.com/wp-content/uploads/2022/05/gm-512-03-500x500-1.jpg",
+        "description":"Backlight: RGB,Sensor: optical, Buttons: 7,DPI:800-1600-2400-3200-4800-6400(default),Switch rating: 3 million clicks",
+        "avaliable_quantity":"500",
+        "minimum_quantity":"50",
+        "unit_price":"1000"
+    },
+    {
+        "_id":"1",
+        "name":"Xtrike Me GM-512 RGB Gaming Mouse",
+        "image":"https://creatuscomputer.com/wp-content/uploads/2022/05/gm-512-03-500x500-1.jpg",
+        "description":"Backlight: RGB,Sensor: optical, Buttons: 7,DPI:800-1600-2400-3200-4800-6400(default),Switch rating: 3 million clicks",
+        "avaliable_quantity":"500",
+        "minimum_quantity":"50",
+        "unit_price":"1000"
+    }
+]
