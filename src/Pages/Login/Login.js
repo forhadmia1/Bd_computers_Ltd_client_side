@@ -1,7 +1,7 @@
 import React from 'react';
 import { FcGoogle } from 'react-icons/fc'
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
@@ -17,6 +17,9 @@ const Login = () => {
     ] = useSignInWithEmailAndPassword(auth);
 
     const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || "/";
+
     let showError;
     if (gError || error) {
         showError = <p className='text-center text-red-500'>{gError?.code.split('/')[1] || error?.code.split('/')[1]}</p>;
@@ -27,7 +30,7 @@ const Login = () => {
     }
 
     if (user || gUser) {
-        navigate('/')
+        navigate(from, { replace: true });
     }
 
     const onSubmit = data => {
