@@ -1,20 +1,45 @@
 import React from 'react';
 import { FcGoogle } from 'react-icons/fc'
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import Loading from '../Shared/Loading';
 
 const Login = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const [signInWithGoogle, gUser, loading, gError] = useSignInWithGoogle(auth);
-    const onSubmit = data => console.log(data);
+    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
+
+    const navigate = useNavigate()
+    let showError;
+    if (gError || error) {
+        showError = <p className='text-center text-red-500'>{gError?.code.split('/')[1] || error?.code.split('/')[1]}</p>;
+    }
+
+    if (loading || gLoading) {
+        return <Loading />
+    }
+
+    if (user || gUser) {
+        navigate('/')
+    }
+
+    const onSubmit = data => {
+        signInWithEmailAndPassword(data.email, data.password)
+    };
+
     return (
         <section class="h-screen">
             <div class="container px-6 py-16 mx-auto">
                 <div class="flex justify-center text-gray-800">
                     <div class="md:w-8/12 lg:w-4/12 w-10/12">
-                        <h2 className='text-center text-2xl mb-10 font-bold text-secondary'>LogIn</h2>
+                        <h2 className='text-center text-2xl mb-10 font-bold text-secondary'>Log In</h2>
                         <form onSubmit={handleSubmit(onSubmit)}>
                             {/* <!-- Email input --> */}
                             <div class="mb-6">
@@ -71,6 +96,7 @@ const Login = () => {
                                 value={'LogIn'}
                                 class="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
                             />
+                            {showError}
 
                             <div
                                 class="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5"
@@ -82,7 +108,7 @@ const Login = () => {
                                 onClick={() => signInWithGoogle()}
                                 class="px-7 py-3 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full flex justify-center items-center mb-3 bg-secondary"
                             >
-                                <FcGoogle className='text-2xl mr-2' />Continue with Facebook
+                                <FcGoogle className='text-2xl mr-2' />Continue with Google
                             </button>
                         </form>
                         <p className='text-center text-secondary'>New to BD Computers LTD?<Link className='text-primary' to={'/signup'}>Create an account</Link></p>
