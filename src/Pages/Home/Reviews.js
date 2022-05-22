@@ -1,6 +1,13 @@
 import React from 'react';
+import { useQuery } from 'react-query';
 
 const Reviews = () => {
+    const { isLoading, data: reviews } = useQuery('reviews', () =>
+        fetch('http://localhost:5000/reviews').then(res =>
+            res.json()
+        )
+    )
+
     return (
         <div class="container my-24 px-6 mx-auto">
 
@@ -10,11 +17,7 @@ const Reviews = () => {
 
                 <div class="grid md:grid-cols-3 gap-x-6 lg:gap-x-12">
                     <div class="mb-12 md:mb-0">
-                        <div class="flex justify-center mb-6">
-                            <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(1).jpg" class="rounded-full shadow-lg w-32" />
-                        </div>
                         <h5 class="text-lg font-bold mb-4">Maria Smantha</h5>
-                        <h6 class="font-medium text-blue-600 mb-4">Web Developer</h6>
                         <p class="mb-4">
                             <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="quote-left"
                                 class="w-6 pr-2 inline-block" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
