@@ -7,7 +7,7 @@ import auth from '../../firebase.init';
 
 const Login = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+    const [signInWithGoogle, gUser, loading, gError] = useSignInWithGoogle(auth);
     const onSubmit = data => console.log(data);
     return (
         <section class="h-screen">
@@ -68,10 +68,9 @@ const Login = () => {
                             {/* <!-- Submit button --> */}
                             <input
                                 type="submit"
+                                value={'LogIn'}
                                 class="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
-                            >
-                                Log in
-                            </input>
+                            />
 
                             <div
                                 class="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5"
