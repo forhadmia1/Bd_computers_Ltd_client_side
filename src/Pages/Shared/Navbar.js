@@ -8,7 +8,7 @@ const Navbar = () => {
     const [user] = useAuthState(auth)
     const location = useLocation()
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100 sticky top-0 z-50">
             <div className='container mx-auto'>
                 <div className='navbar-start w-8/12 flex'>
                     {location.pathname === "/dashboard" && <label for="my-drawer-2" tabIndex="1" className="btn btn-ghost lg:hidden">
