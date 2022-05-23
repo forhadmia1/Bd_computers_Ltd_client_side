@@ -1,6 +1,5 @@
 import React from 'react';
 import { toast } from 'react-toastify';
-import useAdmin from '../../hooks/useAdmin';
 
 const UserRow = ({ user, refetch, index }) => {
     const { name, email, role } = user;
@@ -10,7 +9,7 @@ const UserRow = ({ user, refetch, index }) => {
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify({ role: 'adimn' })
+            body: JSON.stringify({ role: 'admin' })
         }).then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
