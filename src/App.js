@@ -13,6 +13,7 @@ import SignUp from './Pages/Login/SignUp';
 import Navbar from './Pages/Shared/Navbar';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import MakeAdmin from './Pages/Dashboard/MakeAdmin';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route index element={<MyOrders />} />
           <Route path='addReviews' element={<AddReviews />} />
           <Route path='myProfile' element={<MyProfile />} />
+          <Route path='makeAdmin' element={<MakeAdmin />} />
         </Route>
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
