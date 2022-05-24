@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 const PurchasePageform = ({ item, user }) => {
-    const { minimum_quantity, available_quantity } = item;
+    const { minimum_quantity, available_quantity, name, unit_price } = item;
     const [quantity, setQuantity] = useState(minimum_quantity)
     const [quantityError, setQuantityError] = useState('')
 
@@ -15,20 +16,38 @@ const PurchasePageform = ({ item, user }) => {
         }
         else if (parseInt(quantity) < parseInt(minimum_quantity)) {
             return setQuantityError(`You have to purchase at least ${minimum_quantity} products.`)
+        } else if (quantity === '') {
+            return setQuantityError(`You have to purchase at least ${minimum_quantity} products.`)
         }
         else {
             return setQuantityError('')
         }
     }, [quantity, minimum_quantity, available_quantity])
 
-    console.log(quantity)
 
     const handleForm = (e) => {
         e.preventDefault()
         const address = e.target.address.value;
         const phone = e.target.phone.value;
-        const quantity = e.target.quantity.value;
-        console.log(address, phone, quantity)
+        const totalPrice = quantity * unit_price;
+        const orderDetails = ({ email: user.email, address, phone, totalPrice, name, orderStatus: "unpaid" })
+        fetch('http://localhost:5000/orders', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(orderDetails)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    toast.success('Successfully add order!')
+                    e.target.reset()
+                }
+                else {
+                    toast.error('Failed to add order')
+                }
+            })
     }
 
     return (
