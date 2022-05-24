@@ -30,7 +30,7 @@ const PurchasePageform = ({ item, user }) => {
         const address = e.target.address.value;
         const phone = e.target.phone.value;
         const totalPrice = quantity * unit_price;
-        const orderDetails = ({ email: user.email, address, phone, totalPrice, name, orderStatus: "unpaid" })
+        const orderDetails = ({ email: user.email, address, phone, quantity, totalPrice, name, orderStatus: "unpaid" })
         fetch('http://localhost:5000/orders', {
             method: 'POST',
             headers: {
