@@ -19,6 +19,7 @@ import ManageAllOrder from './Pages/Dashboard/ManageAllOrder';
 import AddProduct from './Pages/Dashboard/AddProduct';
 import RequireAdmin from './Pages/Login/RequireAdmin';
 import NotFound from './Pages/Shared/NotFound';
+import PaymentPage from './Pages/Dashboard/PaymentPage';
 
 function App() {
   return (
@@ -62,6 +63,7 @@ function App() {
           } />
         </Route>
         <Route path='/login' element={<Login />} />
+        <Route path='/order/:id' element={<PaymentPage />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
