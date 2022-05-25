@@ -62,8 +62,8 @@ function App() {
             </RequireAdmin>
           } />
         </Route>
-        <Route path='/login' element={<Login />} />
         <Route path='/order/:id' element={<PaymentPage />} />
+        <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
