@@ -1,13 +1,26 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
 
 const DeleteProductModal = ({ data, refetch }) => {
+    const navigate = useNavigate()
     const { name, _id } = data;
     const deleteProduct = (id) => {
         fetch(`http://localhost:5000/hardwares/${id}`, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
         })
-            .then(res => res.json())
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    signOut(auth)
+                    navigate('/login')
+                }
+                return res.json()
+            })
             .then(data => {
                 if (data.deletedCount > 0) {
                     toast.success('Successfully delete product!')

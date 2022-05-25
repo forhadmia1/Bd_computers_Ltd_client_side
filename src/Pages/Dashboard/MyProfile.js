@@ -1,16 +1,26 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 
 const MyProfile = () => {
+    const navigate = useNavigate()
     const [user] = useAuthState(auth)
     const { isLoading, data: userData, refetch } = useQuery('user', () =>
-        fetch(`http://localhost:5000/profile?email=${user.email}`).then(res =>
-            res.json()
-        )
+        fetch(`http://localhost:5000/profile?email=${user.email}`, {
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        }).then(res => {
+            if (res.status === 401 || res.status === 403) {
+                navigate('/error')
+            }
+            return res.json()
+        })
     )
     if (isLoading) {
         return <Loading />
@@ -25,10 +35,17 @@ const MyProfile = () => {
         fetch(`http://localhost:5000/profile?email=${user.email}`, {
             method: 'PUT',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
             },
             body: JSON.stringify(updateData)
-        }).then(res => res.json())
+        }).then(res => {
+            if (res.status === 401 || res.status === 403) {
+                signOut(auth)
+                navigate('/login')
+            }
+            return res.json()
+        })
             .then(data => {
                 if (data.modifiedCount > 0) {
                     toast.success('Successfully updated user')

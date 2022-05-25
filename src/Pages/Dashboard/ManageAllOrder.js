@@ -1,15 +1,26 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 import Loading from '../Shared/Loading';
 import DeleteModal from './DeleteModal';
 import ManageAllOrderRow from './ManageAllOrderRow';
 
 const ManageAllOrder = () => {
     const [data, setData] = useState({})
+    const navigate = useNavigate()
 
     const { isLoading, error, data: palcedOrders, refetch } = useQuery("palcedOrders", () =>
-        fetch('http://localhost:5000/orders')
-            .then(res => res.json())
+        fetch('http://localhost:5000/orders', {
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    navigate('/error')
+                }
+                return res.json()
+            })
     );
     if (isLoading) {
         return <Loading />

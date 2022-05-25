@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 import DeleteModal from './DeleteModal';
@@ -9,9 +10,19 @@ import OrderRow from './OrderRow';
 const MyOrders = () => {
     const [user] = useAuthState(auth)
     const [data, setData] = useState({})
+    const navigate = useNavigate()
     const { isLoading, error, data: orders, refetch } = useQuery("orders", () =>
-        fetch(`http://localhost:5000/orders/${user.email}`)
-            .then(res => res.json())
+        fetch(`http://localhost:5000/orders/${user.email}`, {
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => {
+                if (res.status === 403 || res.status === 401) {
+                    navigate('/error')
+                }
+                return res.json()
+            })
     );
 
     if (isLoading) {

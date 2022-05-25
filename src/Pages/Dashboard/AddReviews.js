@@ -1,9 +1,12 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
 const AddReviews = () => {
+    const navigate = useNavigate()
     const [user] = useAuthState(auth)
     const handleForm = (e) => {
         e.preventDefault()
@@ -17,14 +20,23 @@ const AddReviews = () => {
         fetch('http://localhost:5000/reviews', {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
             },
             body: JSON.stringify(review)
-        }).then(res => res.json())
+        }).then(res => {
+            if (res.status === 401 || res.status === 403) {
+                signOut(auth)
+                navigate('/login')
+            }
+            res.json()
+        })
             .then(data => {
                 if (data.insertedId) {
                     toast.success('Successfully add review!')
                     e.target.reset()
+                } else {
+                    toast.error('Failed! Try again.')
                 }
             })
     }

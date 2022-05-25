@@ -65,6 +65,7 @@ function App() {
         <Route path='/order/:id' element={<PaymentPage />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
+        <Route path='/error' element={<NotFound />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
       <ToastContainer />

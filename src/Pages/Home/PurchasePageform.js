@@ -34,18 +34,21 @@ const PurchasePageform = ({ item, user }) => {
         fetch('http://localhost:5000/orders', {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
             },
             body: JSON.stringify(orderDetails)
         })
-            .then(res => res.json())
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    return toast.error('Failed to add order')
+                }
+                return res.json()
+            })
             .then(data => {
                 if (data.insertedId) {
                     toast.success('Successfully add order!')
                     e.target.reset()
-                }
-                else {
-                    toast.error('Failed to add order')
                 }
             })
     }

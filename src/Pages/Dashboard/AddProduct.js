@@ -1,8 +1,12 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
 
 const AddProduct = () => {
+    const navigate = useNavigate()
     const imageStorageKey = 'd77486f82c5461c850892a498e50d63a';
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
@@ -21,14 +25,24 @@ const AddProduct = () => {
                     fetch('http://localhost:5000/hardwares', {
                         method: 'POST',
                         headers: {
-                            'content-type': 'application/json'
+                            'content-type': 'application/json',
+                            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
                         },
                         body: JSON.stringify(product)
-                    }).then(res => res.json())
+                    }).then(res => {
+                        if (res.status === 401 || res.status === 403) {
+                            navigate('/login')
+                            signOut(auth)
+                        }
+                        return res.json()
+                    })
                         .then(data => {
                             if (data.insertedId) {
                                 toast.success('Successfully add product!')
                                 reset()
+                            }
+                            else {
+                                toast.error('Failed to Add product!')
                             }
                         })
                 }
