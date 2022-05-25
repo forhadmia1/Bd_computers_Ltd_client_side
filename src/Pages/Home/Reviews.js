@@ -16,8 +16,8 @@ const Reviews = () => {
     return (
         <div class="container my-24 px-6 mx-auto">
             <section class="mb-32 text-gray-800 text-center">
-                <h2 class="text-3xl font-bold mb-12 text-accent">Testimonials</h2>
-                <div class="grid md:grid-cols-3 gap-x-6 lg:gap-x-12">
+                <h2 class="text-3xl font-bold mb-12 text-accent">Recent Reviews</h2>
+                <div class="grid md:grid-cols-3 gap-6 lg:gap-12">
                     {
                         reviews.map(review => <ReviewRow
                             key={review._id}

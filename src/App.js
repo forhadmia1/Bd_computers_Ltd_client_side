@@ -20,6 +20,7 @@ import AddProduct from './Pages/Dashboard/AddProduct';
 import RequireAdmin from './Pages/Login/RequireAdmin';
 import NotFound from './Pages/Shared/NotFound';
 import PaymentPage from './Pages/Dashboard/PaymentPage';
+import MyPortfolio from './Pages/MyPortfolio/MyPortfolio';
 
 function App() {
   return (
@@ -63,6 +64,7 @@ function App() {
           } />
         </Route>
         <Route path='/order/:id' element={<PaymentPage />} />
+        <Route path='/portfolio' element={<MyPortfolio />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/error' element={<NotFound />} />

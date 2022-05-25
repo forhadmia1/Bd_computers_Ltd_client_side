@@ -26,9 +26,6 @@ const PaymentPage = () => {
                     <h2 class="card-title">Order for {name}</h2>
                     <p>Quantity: {quantity}</p>
                     <p>Total Price: {totalPrice}</p>
-                    <div class="card-actions justify-end">
-                        <button class="btn btn-primary">Buy Now</button>
-                    </div>
                 </div>
             </div>
             <div class="card w-8/12 bg-base-100 shadow-xl mx-auto mt-12">

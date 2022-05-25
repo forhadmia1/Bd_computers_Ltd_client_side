@@ -19,13 +19,15 @@ const Footer = () => {
                 </div>
                 <div>
                     <span class="footer-title">Quick Links</span>
-                    <Link to='' class="link link-hover flex items-center"><MdKeyboardArrowRight className='text-xl' /><span>Brading</span></Link>
+                    <Link to='/' class="link link-hover flex items-center"><MdKeyboardArrowRight className='text-xl' /><span>Home</span></Link>
+                    <Link to='/blogs' class="link link-hover flex items-center"><MdKeyboardArrowRight className='text-xl' /><span>Blogs</span></Link>
+                    <Link to='/portfolio' class="link link-hover flex items-center"><MdKeyboardArrowRight className='text-xl' /><span>My Portfolio</span></Link>
                 </div>
                 <div>
                     <span class="footer-title">Get In Touch</span>
-                    <p className='flex items-center'><BsTelephoneFill className='mr-2 text-xl text-secondary' />About us</p>
-                    <p className='flex items-center mt-2'><MdEmail className='mr-2 text-xl text-secondary' />About us</p>
-                    <p className='flex items-center mt-2'><FaHome className='mr-2 text-xl text-secondary' />About us</p>
+                    <p className='flex items-center'><BsTelephoneFill className='mr-2 text-xl text-secondary' />+8801700-000000</p>
+                    <p className='flex items-center mt-2'><MdEmail className='mr-2 text-xl text-secondary' />forhad8613@gmail.com</p>
+                    <p className='flex items-center mt-2'><FaHome className='mr-2 text-xl text-secondary' />Rangpur, Bangladesh</p>
                 </div>
             </div>
             <div className='p-4 text-white text-center bg-secondary'>

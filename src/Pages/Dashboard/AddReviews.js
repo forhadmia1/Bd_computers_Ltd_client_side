@@ -29,7 +29,7 @@ const AddReviews = () => {
                 signOut(auth)
                 navigate('/login')
             }
-            res.json()
+            return res.json()
         })
             .then(data => {
                 if (data.insertedId) {
