@@ -7,7 +7,7 @@ import sample3 from '../../Assets/Images/portfolio/sample.png'
 const MyPortfolio = () => {
     return (
         <div>
-            <div className='px-14 grid grid-cols-1 md:grid-cols-2 mt-8'>
+            <div className='px-14 grid grid-cols-1 md:grid-cols-2 my-8'>
                 <div>
                     <h2 className='text-3xl font-bold text-accent'>MD Forhad Mia</h2>
                     <p className='text-secondary text-xl mt-2'>Email: forhad8613@gmail.com</p>

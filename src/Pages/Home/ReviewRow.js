@@ -19,6 +19,7 @@ const ReviewRow = ({ review }) => {
             <ul className="flex justify-center mb-0">
                 <Rating
                     className='text-primary text-xl'
+                    readonly
                     placeholderRating={rating}
                     emptySymbol={<AiOutlineStar />}
                     placeholderSymbol={<AiFillStar />}
