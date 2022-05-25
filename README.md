@@ -20,3 +20,4 @@ Live site Link: [https://bd-computers-ltd.web.app/](https://bd-computers-ltd.web
 - react toast
 - react hook form
 - firebase
+- stripe
