@@ -41,7 +41,7 @@ const AddReviews = () => {
             })
     }
     return (
-        <div className='flex justify-center w-full'>
+        <div className='flex justify-center w-full md:px-12 px-4'>
             <div className='w-10/12  mt-6'>
                 <h2 className='text-2xl font-bold text-accent'>Add Reviews here</h2>
                 <form onSubmit={handleForm} className='w-full'>

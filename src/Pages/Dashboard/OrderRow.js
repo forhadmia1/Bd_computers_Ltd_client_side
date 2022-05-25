@@ -10,7 +10,7 @@ const OrderRow = ({ order, index, getData }) => {
             <th>{index + 1}</th>
             <td>{name}</td>
             <td>{quantity}</td>
-            <td>{totalPrice}</td>
+            <td>${totalPrice}</td>
             <td>{
                 orderStatus === 'unpaid' ? <button onClick={() => navigate(`/order/${_id}`)} class="btn btn-sm btn-primary">Pay</button> : <span className='text-green-500'>paid <br /> Transection ID: {transectionId}</span>
             }</td>

@@ -27,26 +27,29 @@ const MakeAdmin = () => {
         return <Loading />
     }
     return (
-        <div class="overflow-x-auto w-full">
-            <table class="table w-full">
-                <thead>
-                    <tr>
-                        <th>SI:</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        users.map((user, index) => <UserRow
-                            key={user._id}
-                            user={user}
-                            refetch={refetch}
-                        />)
-                    }
-                </tbody>
-            </table>
+        <div className="px-4">
+            <div class="overflow-x-auto mt-4">
+                <table class="table table-compact w-full">
+                    <thead>
+                        <tr>
+                            <th>SI:</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            users.map((user, index) => <UserRow
+                                key={user._id}
+                                user={user}
+                                refetch={refetch}
+                                index={index}
+                            />)
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };

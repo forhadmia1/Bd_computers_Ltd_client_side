@@ -29,34 +29,36 @@ const ManageAllOrder = () => {
         setData(data)
     }
     return (
-        <div class="overflow-x-auto w-full">
-            <table class="table w-full">
-                <thead>
-                    <tr>
-                        <th>Si:</th>
-                        <th>Name</th>
-                        <th>Quantity</th>
-                        <th>OrderStatus</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        palcedOrders.map((order, index) => <ManageAllOrderRow
-                            key={order._id}
-                            order={order}
-                            index={index}
-                            getData={getData}
-                            refetch={refetch}
-                        />)
-                    }
-                </tbody>
-            </table>
-            <DeleteModal
-                name={data.name}
-                _id={data._id}
-                refetch={refetch}
-            />
+        <div className='px-4'>
+            <div class="overflow-x-auto mt-4">
+                <table class="table table-compact w-full">
+                    <thead>
+                        <tr>
+                            <th>Si:</th>
+                            <th>Name</th>
+                            <th>Quantity</th>
+                            <th>OrderStatus</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            palcedOrders.map((order, index) => <ManageAllOrderRow
+                                key={order._id}
+                                order={order}
+                                index={index}
+                                getData={getData}
+                                refetch={refetch}
+                            />)
+                        }
+                    </tbody>
+                </table>
+                <DeleteModal
+                    name={data.name}
+                    _id={data._id}
+                    refetch={refetch}
+                />
+            </div>
         </div>
     );
 };

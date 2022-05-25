@@ -13,7 +13,7 @@ const ManageProductRow = ({ index, product, getData }) => {
                 </div>
             </td>
             <td>{name}</td>
-            <td>{unit_price}</td>
+            <td>${unit_price}</td>
             <td><label onClick={() => getData({ _id, name })} for="delete_product" class="btn modal-button">Delete Product</label></td>
         </tr>
     );
