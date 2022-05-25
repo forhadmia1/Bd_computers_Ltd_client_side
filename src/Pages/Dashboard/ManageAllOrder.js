@@ -10,7 +10,7 @@ const ManageAllOrder = () => {
     const navigate = useNavigate()
 
     const { isLoading, error, data: palcedOrders, refetch } = useQuery("palcedOrders", () =>
-        fetch('http://localhost:5000/orders', {
+        fetch('https://lit-caverns-37458.herokuapp.com/orders', {
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
             }
@@ -30,8 +30,8 @@ const ManageAllOrder = () => {
     }
     return (
         <div className='px-4'>
-            <div class="overflow-x-auto mt-4">
-                <table class="table table-compact w-full">
+            <div className="overflow-x-auto mt-4">
+                <table className="table table-compact w-full">
                     <thead>
                         <tr>
                             <th>Si:</th>

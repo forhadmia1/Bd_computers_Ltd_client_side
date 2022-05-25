@@ -11,7 +11,7 @@ const PurchaseHardware = () => {
     const { id } = useParams()
     const [user, loading] = useAuthState(auth)
     const { isLoading, error, data: item } = useQuery("item", () =>
-        fetch(`http://localhost:5000/hardware/${id}`)
+        fetch(`https://lit-caverns-37458.herokuapp.com/hardware/${id}`)
             .then(res => res.json())
     );
 
@@ -23,10 +23,10 @@ const PurchaseHardware = () => {
 
     return (
         <div className='grid grid-cols-2 container mx-auto mt-4 px-12 gap-20'>
-            <div class="card w-full bg-base-100 shadow-xl">
+            <div className="card w-full bg-base-100 shadow-xl">
                 <figure><img className='w-full h-80' src={image} alt={name} /></figure>
-                <div class="card-body">
-                    <h2 class="card-title">{name}</h2>
+                <div className="card-body">
+                    <h2 className="card-title">{name}</h2>
                     <p>{description}</p>
                     <p className='flex items-center'><BsFillCheckCircleFill className='mr-2' />Avaliable Quantity: {available_quantity}</p>
                     <p className='flex items-center'><BsFillCheckCircleFill className='mr-2' />Minimum Quantity: {minimum_quantity}</p>

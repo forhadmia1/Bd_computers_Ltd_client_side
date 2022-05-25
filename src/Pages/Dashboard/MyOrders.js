@@ -12,7 +12,7 @@ const MyOrders = () => {
     const [data, setData] = useState({})
     const navigate = useNavigate()
     const { isLoading, error, data: orders, refetch } = useQuery("orders", () =>
-        fetch(`http://localhost:5000/orders/${user.email}`, {
+        fetch(`https://lit-caverns-37458.herokuapp.com/orders/${user.email}`, {
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
             }
@@ -34,8 +34,8 @@ const MyOrders = () => {
 
     return (
         <div className="px-4">
-            <div class="overflow-x-auto  mt-4">
-                <table class="table table-compact w-full">
+            <div className="overflow-x-auto  mt-4">
+                <table className="table table-compact w-full">
                     <thead>
                         <tr>
                             <th>Si:</th>

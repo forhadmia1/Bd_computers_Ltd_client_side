@@ -22,7 +22,7 @@ const AddProduct = () => {
                 const image = result.data.url;
                 if (image) {
                     const product = { ...data, image }
-                    fetch('http://localhost:5000/hardwares', {
+                    fetch('https://lit-caverns-37458.herokuapp.com/hardwares', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',
@@ -55,11 +55,11 @@ const AddProduct = () => {
         <div className='w-full px-12'>
             <h2 className='text-3xl text-accent font-bold my-8'>Add new product</h2>
             <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col items-center gap-4'>
-                <input type="text" placeholder="Product Name" class="input input-bordered w-full "{...register("name", { required: true })} />
-                <input type="number" placeholder="Available Quantity" class="input input-bordered w-full " {...register("available_quantity", { required: true })} />
-                <input type="number" placeholder="Minimum Quantity" class="input input-bordered w-full " {...register("minimum_quantity", { required: true })} />
-                <input type="number" placeholder="Unit price" class="input input-bordered w-full " {...register("unit_price", { required: true })} />
-                <textarea class="textarea textarea-bordered w-full" placeholder="Product description"{...register("description", { required: true })}></textarea>
+                <input type="text" placeholder="Product Name" className="input input-bordered w-full "{...register("name", { required: true })} />
+                <input type="number" placeholder="Available Quantity" className="input input-bordered w-full " {...register("available_quantity", { required: true })} />
+                <input type="number" placeholder="Minimum Quantity" className="input input-bordered w-full " {...register("minimum_quantity", { required: true })} />
+                <input type="number" placeholder="Unit price" className="input input-bordered w-full " {...register("unit_price", { required: true })} />
+                <textarea className="textarea textarea-bordered w-full" placeholder="Product description"{...register("description", { required: true })}></textarea>
                 <input className='w-full' type='file' {...register("image", { required: true })} />
                 <div className='w-full'>
                     <input type='submit' className='btn btn-primary px-6' />

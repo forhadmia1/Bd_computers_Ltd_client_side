@@ -9,7 +9,7 @@ import UserRow from './UserRow';
 const MakeAdmin = () => {
     const navigate = useNavigate()
     const { isLoading, data: users, refetch } = useQuery("users", () =>
-        fetch('http://localhost:5000/users', {
+        fetch('https://lit-caverns-37458.herokuapp.com/users', {
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
             }
@@ -28,8 +28,8 @@ const MakeAdmin = () => {
     }
     return (
         <div className="px-4">
-            <div class="overflow-x-auto mt-4">
-                <table class="table table-compact w-full">
+            <div className="overflow-x-auto mt-4">
+                <table className="table table-compact w-full">
                     <thead>
                         <tr>
                             <th>SI:</th>

@@ -5,7 +5,7 @@ import HardwareCard from './HardwareCard';
 
 const Hardwares = () => {
     const { isLoading, error, data: hardwares } = useQuery("hardware", () =>
-        fetch('http://localhost:5000/hardwares')
+        fetch('https://lit-caverns-37458.herokuapp.com/hardwares')
             .then(res => res.json())
     );
 
@@ -14,7 +14,7 @@ const Hardwares = () => {
     }
     return (
         <section>
-            <h2 className='text-3xl text-accent font-bold text-center my-16'>Tools</h2>
+            <h2 className='text-3xl text-accent font-bold text-center my-16'>All Parts</h2>
             <div className='grid grid-cols-1 lg:grid-cols-3 gap-10 container mx-auto justify-items-center'>
                 {
                     hardwares.map(hardware => <HardwareCard

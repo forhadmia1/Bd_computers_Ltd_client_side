@@ -12,10 +12,10 @@ const OrderRow = ({ order, index, getData }) => {
             <td>{quantity}</td>
             <td>${totalPrice}</td>
             <td>{
-                orderStatus === 'unpaid' ? <button onClick={() => navigate(`/order/${_id}`)} class="btn btn-sm btn-primary">Pay</button> : <span className='text-green-500'>paid <br /> Transection ID: {transectionId}</span>
+                orderStatus === 'unpaid' ? <button onClick={() => navigate(`/order/${_id}`)} className="btn btn-sm btn-primary">Pay</button> : <span className='text-green-500'>paid <br /> Transection ID: {transectionId}</span>
             }</td>
             <td>
-                <label onClick={() => getData({ _id, name })} for="cancel_order" class="btn modal-button" disabled={orderStatus === 'paid' ? true : false}>Delete Order</label>
+                <label onClick={() => getData({ _id, name })} htmlFor="cancel_order" className="btn modal-button" disabled={orderStatus === 'paid' ? true : false}>Delete Order</label>
             </td>
         </tr>
     );

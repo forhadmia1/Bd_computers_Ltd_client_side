@@ -7,7 +7,7 @@ import ManageProductRow from './ManageProductRow';
 const ManageProducts = () => {
     const [data, setData] = useState({})
     const { isLoading, error, data: products, refetch } = useQuery("products", () =>
-        fetch('http://localhost:5000/hardwares')
+        fetch('https://lit-caverns-37458.herokuapp.com/hardwares')
             .then(res => res.json())
     );
     if (isLoading) {
@@ -19,8 +19,8 @@ const ManageProducts = () => {
 
     return (
         <div className="px-4">
-            <div class="overflow-x-auto mt-4">
-                <table class="table table-compact w-full">
+            <div className="overflow-x-auto mt-4">
+                <table className="table table-compact w-full">
                     <thead>
                         <tr>
                             <th>Si:</th>
@@ -33,7 +33,7 @@ const ManageProducts = () => {
                     <tbody>
                         {
                             products.map((product, index) => <ManageProductRow
-                                key={product._key}
+                                key={product._id}
                                 index={index}
                                 product={product}
                                 getData={getData}

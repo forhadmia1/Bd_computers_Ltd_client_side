@@ -6,15 +6,15 @@ const ManageProductRow = ({ index, product, getData }) => {
         <tr>
             <th>{index + 1}</th>
             <td>
-                <div class="avatar">
-                    <div class="mask mask-squircle w-12 h-12">
+                <div className="avatar">
+                    <div className="mask mask-squircle w-12 h-12">
                         <img src={image} alt={name} />
                     </div>
                 </div>
             </td>
             <td>{name}</td>
             <td>${unit_price}</td>
-            <td><label onClick={() => getData({ _id, name })} for="delete_product" class="btn modal-button">Delete Product</label></td>
+            <td><label onClick={() => getData({ _id, name })} htmlFor="delete_product" className="btn modal-button">Delete Product</label></td>
         </tr>
     );
 };

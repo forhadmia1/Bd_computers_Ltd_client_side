@@ -11,7 +11,7 @@ const stripePromise = loadStripe('pk_test_51L31xRIBSJhlneIDCMOq1S0WmZPaYWMRjA1Vx
 const PaymentPage = () => {
     const { id } = useParams()
     const { isLoading, error, data: order, refetch } = useQuery("order", () =>
-        fetch(`http://localhost:5000/order/${id}`)
+        fetch(`https://lit-caverns-37458.herokuapp.com/order/${id}`)
             .then(res => res.json())
     );
 
@@ -21,15 +21,15 @@ const PaymentPage = () => {
     const { name, quantity, totalPrice, orderStatus, _id } = order;
     return (
         <div >
-            <div class="card w-8/12 bg-base-100 shadow-xl mx-auto mt-12">
-                <div class="card-body">
-                    <h2 class="card-title">Order for {name}</h2>
+            <div className="card w-8/12 bg-base-100 shadow-xl mx-auto mt-12">
+                <div className="card-body">
+                    <h2 className="card-title">Order for {name}</h2>
                     <p>Quantity: {quantity}</p>
                     <p>Total Price: {totalPrice}</p>
                 </div>
             </div>
-            <div class="card w-8/12 bg-base-100 shadow-xl mx-auto mt-12">
-                <div class="card-body">
+            <div className="card w-8/12 bg-base-100 shadow-xl mx-auto mt-12">
+                <div className="card-body">
                     <Elements stripe={stripePromise}>
                         <CheckoutForm
                             order={order}

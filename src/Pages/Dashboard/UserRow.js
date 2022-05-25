@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 const UserRow = ({ user, refetch, index }) => {
     const { name, email, role } = user;
     const makeAdmin = (email) => {
-        fetch(`http://localhost:5000/profile?email=${email}`, {
+        fetch(`https://lit-caverns-37458.herokuapp.com/profile?email=${email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -25,7 +25,7 @@ const UserRow = ({ user, refetch, index }) => {
             <th>{index + 1}</th>
             <td>{name}</td>
             <td>{email}</td>
-            <td>{!role && <button onClick={() => makeAdmin(user.email)} class="btn btn-sm">Make Admin</button>}</td>
+            <td>{!role && <button onClick={() => makeAdmin(user.email)} className="btn btn-sm">Make Admin</button>}</td>
         </tr>
     );
 };
