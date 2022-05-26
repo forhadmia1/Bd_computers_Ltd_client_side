@@ -6,7 +6,7 @@ const JoinNewsLetter = () => {
         e.preventDefault()
         const email = e.target.email.value;
         const subscriber = { subscriber: email }
-        fetch('http://localhost:5000/subscribe', {
+        fetch('https://lit-caverns-37458.herokuapp.com/subscriber', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
