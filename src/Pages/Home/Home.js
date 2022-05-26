@@ -5,6 +5,7 @@ import BusinessSummary from './BusinessSummary';
 import Hardwares from './Hardwares';
 import JoinNewsLetter from './JoinNewsLetter';
 import Reviews from './Reviews';
+import WhyChoseUs from './WhyChoseUs';
 
 const Home = () => {
     return (
@@ -13,6 +14,7 @@ const Home = () => {
             <Hardwares />
             <BusinessSummary />
             <Reviews />
+            <WhyChoseUs />
             <JoinNewsLetter />
             <Footer />
         </div>

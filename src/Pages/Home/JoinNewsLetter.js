@@ -15,10 +15,11 @@ const JoinNewsLetter = () => {
         })
             .then(res => res.json())
             .then(data => {
+                console.log(data)
                 if (data.exists) {
-                    return toast.success('Subscribed successfully!')
-                } else {
                     return toast.error('Already Subscribed!')
+                } else {
+                    return toast.success('Subscribed successfully!')
                 }
             })
         e.target.reset()
@@ -50,7 +51,7 @@ const JoinNewsLetter = () => {
                                         <h2 className="text-3xl font-bold">
                                             Do not miss any updates.
                                             <br />
-                                            <span className="text-blue-600">Subscribe to the newsletter</span>
+                                            <span className="text-blue-600">Stay connected with BD Computers LTD</span>
                                         </h2>
                                     </div>
 

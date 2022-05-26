@@ -7,7 +7,8 @@ const UserRow = ({ user, refetch, index }) => {
         fetch(`https://lit-caverns-37458.herokuapp.com/profile?email=${email}`, {
             method: 'PUT',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
             },
             body: JSON.stringify({ role: 'admin' })
         }).then(res => res.json())
