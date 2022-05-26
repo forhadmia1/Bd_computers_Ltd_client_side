@@ -22,7 +22,7 @@ const PurchaseHardware = () => {
     const { name, image, description, available_quantity, minimum_quantity, unit_price } = item;
 
     return (
-        <div className='grid grid-cols-2 container mx-auto mt-4 px-12 gap-20'>
+        <div className='grid grid-cols-1 md:grid-cols-2 container mx-auto mt-4 px-6 md:px-12 gap-20'>
             <div className="card w-full bg-base-100 shadow-xl">
                 <figure><img className='w-full h-80' src={image} alt={name} /></figure>
                 <div className="card-body">
