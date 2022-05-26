@@ -31,7 +31,7 @@ const SignUp = () => {
     }
 
     if (token) {
-        navigate('/')
+        navigate('/home')
     }
 
     const onSubmit = async data => {

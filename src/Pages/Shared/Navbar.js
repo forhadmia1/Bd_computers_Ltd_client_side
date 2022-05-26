@@ -6,6 +6,9 @@ import { signOut } from 'firebase/auth';
 
 const Navbar = () => {
     const [user] = useAuthState(auth)
+
+    console.log(user)
+
     return (
         <div className="navbar bg-base-100 sticky top-0 z-50">
             <div className='container mx-auto'>
@@ -28,7 +31,7 @@ const Navbar = () => {
                                 : <>
                                     <li><Link to={'/dashboard'}>Dashboard</Link></li>
                                     <li><button onClick={() => signOut(auth)}>Sign Out</button></li>
-                                    <li className='font-bold'><span>{user && user?.displayName}</span></li>
+                                    <li className='font-bold'><span>{user?.displayName}</span></li>
                                 </>}
                         </ul>
                     </div>

@@ -2,10 +2,10 @@ import { useState } from "react";
 
 const useToken = (user) => {
     const [token, setToken] = useState('')
-    const email = user?.user?.email;
-    const name = user?.user?.displayName;
-    const currentUser = { email: email, name: name }
-    if (email) {
+    if (user) {
+        const email = user?.user?.email;
+        const name = user?.user?.displayName;
+        const currentUser = { email: email, name: name }
         fetch(`https://lit-caverns-37458.herokuapp.com/user/${email}`, {
             method: 'PUT',
             headers: {
