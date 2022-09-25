@@ -2,6 +2,10 @@
 
 Live site Link: [https://bd-computers-ltd.web.app/](https://bd-computers-ltd.web.app/).
 
+### Admin Login: 
+<p>Email: admin123@mail.com</p>
+<p>Password: admin123</p>
+
 ## Features and Functionality
 
 - user can login or sign up
